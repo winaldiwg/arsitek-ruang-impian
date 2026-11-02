@@ -74,7 +74,7 @@ function About() {
               <div className="relative aspect-[4/5] overflow-hidden bg-sand">
                 <img src={projects[(i * 3) % projects.length]!.image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover opacity-30 grayscale" />
                 <span className="absolute inset-0 flex items-center justify-center font-serif text-7xl text-primary">
-                  {n.split(" ").slice(0, 2).map((w) => w.charAt(0)).join("")}
+                  {n!.split(" ").slice(0, 2).map((w) => w.charAt(0)).join("")}
                 </span>
               </div>
               <h3 className="mt-5 text-2xl">{n}</h3>
