@@ -37,13 +37,13 @@ export function TextLink({ to, children, light }: { to: string; children: ReactN
 }
 
 /* ---------- Reveal on scroll ---------- */
-export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string | undefined; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add("is-visible"); io.disconnect(); } },
+      ([e]) => { if (e?.isIntersecting) { el.classList.add("is-visible"); io.disconnect(); } },
       { threshold: 0.12 },
     );
     io.observe(el);
@@ -219,7 +219,7 @@ export function PageHeader({ crumb, title, intro }: { crumb: string; title: stri
 }
 
 /* ---------- Project card ---------- */
-export function ProjectCard({ p, className, aspect = "aspect-[4/5]" }: { p: Project; className?: string; aspect?: string }) {
+export function ProjectCard({ p, className, aspect = "aspect-[4/5]" }: { p: Project; className?: string | undefined; aspect?: string }) {
   return (
     <Link to="/portfolio/$slug" params={{ slug: p.slug }} className={cn("group block", className)}>
       <div className={cn("relative overflow-hidden bg-sand", aspect)}>

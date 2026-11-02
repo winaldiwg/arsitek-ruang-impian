@@ -61,8 +61,8 @@ function Home() {
           <Reveal><Eyebrow>Services</Eyebrow><h2 className="mt-4 text-4xl md:text-6xl">What We Do</h2></Reveal>
           <div className="mt-14 grid gap-12 md:grid-cols-2">
             {[
-              { t: "Residential Design", d: "From early concept to working drawings, we design homes that fit your land, the tropical climate, and your family's lifestyle.", img: projects[0].image, alt: "Stepped modern tropical house on a hillside" },
-              { t: "Interior Design", d: "Interiors that blend with the character of their occupants, complete with custom furniture and material selection.", img: projects[5].image, alt: "Japandi living room with oak slatted partition" },
+              { t: "Residential Design", d: "From early concept to working drawings, we design homes that fit your land, the tropical climate, and your family's lifestyle.", img: projects[0]!.image, alt: "Stepped modern tropical house on a hillside" },
+              { t: "Interior Design", d: "Interiors that blend with the character of their occupants, complete with custom furniture and material selection.", img: projects[5]!.image, alt: "Japandi living room with oak slatted partition" },
             ].map((s, i) => (
               <Reveal key={s.t} delay={i * 120}>
                 <Link to="/services" className="group block">
@@ -91,7 +91,7 @@ function Home() {
             const layout = [
               "md:col-span-7", "md:col-span-5 md:mt-32", "md:col-span-5",
               "md:col-span-7 md:mt-24", "md:col-span-6", "md:col-span-6 md:mt-20",
-            ][i];
+            ][i]!;
             const aspect = i === 0 || i === 3 ? "aspect-[5/4]" : "aspect-[4/5]";
             return <Reveal key={p.slug} className={layout} delay={(i % 2) * 120}><ProjectCard p={p} aspect={aspect} /></Reveal>;
           })}
@@ -129,7 +129,7 @@ function Home() {
 
       {/* CTA */}
       <section className="relative overflow-hidden">
-        <img src={projects[6].image} alt="Warm family room with walnut built-in shelving" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={projects[6]!.image} alt="Warm family room with walnut built-in shelving" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-overlay-strong" />
         <div className="container-site relative py-32 text-center text-background md:py-44">
           <Reveal>
@@ -154,7 +154,7 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
+      if (!e?.isIntersecting) return;
       io.disconnect();
       const start = performance.now();
       const tick = (t: number) => {
@@ -194,7 +194,7 @@ function Stats() {
 
 function Testimonials() {
   const [i, setI] = useState(0);
-  const t = testimonials[i];
+  const t = testimonials[i]!;
   const go = (d: number) => setI((x) => (x + d + testimonials.length) % testimonials.length);
   useEffect(() => {
     const id = setInterval(() => go(1), 8000);

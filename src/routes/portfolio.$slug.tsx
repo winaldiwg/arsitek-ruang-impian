@@ -33,8 +33,8 @@ function ProjectDetail() {
   const gallery = galleryFor(p);
   const [lb, setLb] = useState<number | null>(null);
   const idx = projects.findIndex((x) => x.slug === p.slug);
-  const prev = projects[(idx - 1 + projects.length) % projects.length];
-  const next = projects[(idx + 1) % projects.length];
+  const prev = projects[(idx - 1 + projects.length) % projects.length]!;
+  const next = projects[(idx + 1) % projects.length]!;
   const related = projects.filter((x) => x.category === p.category && x.slug !== p.slug).slice(0, 3);
 
   useEffect(() => {
@@ -130,8 +130,8 @@ function ProjectDetail() {
           <button className="absolute right-5 top-5 text-background" aria-label="Close"><X className="h-7 w-7 stroke-[1.25]" /></button>
           <button className="absolute left-3 p-3 text-background md:left-8" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); setLb((lb - 1 + gallery.length) % gallery.length); }}><ChevronLeft className="h-8 w-8 stroke-[1]" /></button>
           <figure className="max-h-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-            <img src={gallery[lb].src} alt={`${p.name} — ${gallery[lb].caption}`} className="max-h-[80vh] w-auto object-contain" />
-            <figcaption className="label-caps mt-4 text-center text-background/80">{gallery[lb].caption} · {lb + 1}/{gallery.length}</figcaption>
+            <img src={gallery[lb]!.src} alt={`${p.name} — ${gallery[lb]!.caption}`} className="max-h-[80vh] w-auto object-contain" />
+            <figcaption className="label-caps mt-4 text-center text-background/80">{gallery[lb]!.caption} · {lb + 1}/{gallery.length}</figcaption>
           </figure>
           <button className="absolute right-3 p-3 text-background md:right-8" aria-label="Next image" onClick={(e) => { e.stopPropagation(); setLb((lb + 1) % gallery.length); }}><ChevronRight className="h-8 w-8 stroke-[1]" /></button>
         </div>

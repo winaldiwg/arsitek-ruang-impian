@@ -72,9 +72,9 @@ function About() {
           {team.map(([n, r, q], i) => (
             <Reveal key={n} delay={i * 80}>
               <div className="relative aspect-[4/5] overflow-hidden bg-sand">
-                <img src={projects[(i * 3) % projects.length].image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover opacity-30 grayscale" />
+                <img src={projects[(i * 3) % projects.length]!.image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover opacity-30 grayscale" />
                 <span className="absolute inset-0 flex items-center justify-center font-serif text-7xl text-primary">
-                  {n.split(" ").slice(0, 2).map((w) => w[0]).join("")}
+                  {n.split(" ").slice(0, 2).map((w) => w.charAt(0)).join("")}
                 </span>
               </div>
               <h3 className="mt-5 text-2xl">{n}</h3>
@@ -97,7 +97,7 @@ function About() {
       </section>
 
       <section className="container-site grid items-center gap-12 py-24 md:grid-cols-2">
-        <img src={projects[6].image} alt="Warm Family Room in Kemang with walnut built-in shelving" loading="lazy" className="aspect-[4/3] w-full object-cover" />
+        <img src={projects[6]!.image} alt="Warm Family Room in Kemang with walnut built-in shelving" loading="lazy" className="aspect-[4/3] w-full object-cover" />
         <figure>
           <span aria-hidden className="font-serif text-7xl leading-none text-primary">“</span>
           <blockquote className="font-serif text-2xl italic leading-relaxed md:text-3xl">The family room that used to be dark is now our favorite place after work. The built-in shelves are perfect for my husband's book collection.</blockquote>

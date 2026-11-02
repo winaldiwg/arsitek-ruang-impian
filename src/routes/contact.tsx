@@ -130,7 +130,7 @@ function Contact() {
               {[["Is the consultation paid?", "No — the initial consultation is free of charge."],
                 ["Can it be done online?", "Yes. We hold consultations via video call or in person at our Bandung studio."],
                 ["What should I prepare?", "Land or property data, reference images, and a rough idea of your space needs and budget range."]].map(([q, a]) => (
-                <AccordionItem key={q} value={q}><AccordionTrigger className="font-serif text-xl hover:no-underline">{q}</AccordionTrigger><AccordionContent className="text-muted-foreground">{a}</AccordionContent></AccordionItem>
+                <AccordionItem key={q} value={q!}><AccordionTrigger className="font-serif text-xl hover:no-underline">{q}</AccordionTrigger><AccordionContent className="text-muted-foreground">{a}</AccordionContent></AccordionItem>
               ))}
             </Accordion>
           </div>
@@ -140,7 +140,7 @@ function Contact() {
   );
 }
 
-function Field({ label, required, error, children, className }: { label: string; required?: boolean; error?: string; children: React.ReactNode; className?: string }) {
+function Field({ label, required, error, children, className }: { label: string; required?: boolean; error?: string | undefined; children: React.ReactNode; className?: string }) {
   return (
     <label className={cn("block", className)}>
       <span className="label-caps text-muted-foreground">{label}{required && <span className="text-primary"> *</span>}</span>

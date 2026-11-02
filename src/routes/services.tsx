@@ -17,11 +17,11 @@ export const Route = createFileRoute("/services")({
 });
 
 const services = [
-  { t: "Residential Design", img: projects[3].image, alt: "Courtyard house with timber ceiling and garden",
+  { t: "Residential Design", img: projects[3]!.image, alt: "Courtyard house with timber ceiling and garden",
     d: "We design homes from scratch, tailored to your land, the tropical climate, and the way your family lives.",
     items: ["Design concept and floor plans", "3D renders (exterior and interior)", "Complete working drawings (DED)", "Cost estimate (RAB)", "Building permit (PBG) assistance", "Periodic construction supervision"],
     ideal: "Landowners building a new home or undertaking a major renovation" },
-  { t: "Interior Design", img: projects[8].image, alt: "Serene bedroom with timber headboard and window bench",
+  { t: "Interior Design", img: projects[8]!.image, alt: "Serene bedroom with timber headboard and window bench",
     d: "Interiors that blend with their occupants' character, from concept to final installation.",
     items: ["Concept and moodboard", "3D renders of each room", "Custom and built-in furniture design", "Material, color, and furniture selection", "Interior working drawings and cost estimate", "Implementation supervision"],
     ideal: "Houses, apartments, cafés, and small offices" },
@@ -130,7 +130,7 @@ function Services() {
         <h2 className="text-4xl md:col-span-4">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="md:col-span-8">
           {faqs.map(([q, a]) => (
-            <AccordionItem key={q} value={q}>
+            <AccordionItem key={q} value={q!}>
               <AccordionTrigger className="font-serif text-xl hover:no-underline">{q}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{a}</AccordionContent>
             </AccordionItem>
