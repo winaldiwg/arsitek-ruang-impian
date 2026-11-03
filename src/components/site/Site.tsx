@@ -190,7 +190,6 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© 2026 Arkana Studio. All rights reserved. · <a href="#" className="underline-offset-4 hover:underline">Privacy Policy</a></p>
-          <p>This website is a demonstration project. All content is fictional.</p>
         </div>
       </div>
     </footer>
